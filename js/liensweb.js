@@ -136,7 +136,7 @@ form.addEventListener('submit', function(e){
               msg.style.display = "none";
             }, 3000)
 });
-document.getElementById('nom').innerHTML = '';
-document.getElementById('titre').innerHTML = '';
-document.getElementById('url').innerHTML = '';
+document.getElementById('nom').value = '';
+document.getElementById('titre').innerHTML = ' ';
+document.getElementById('url').innerHTML = ' ';
 /******************Activité_3*****************************/
