@@ -76,7 +76,7 @@ button.addEventListener('click', function(){
 
 form.addEventListener('submit', function(e){
   var nouveauLien = {
-    nom : e.target.elements.nom.value,
+    auteur : e.target.elements.nom.value,
     titre : e.target.elements.titre.value,
     url : e.target.elements.url.value
   };
@@ -85,7 +85,7 @@ form.addEventListener('submit', function(e){
       nouveauLien,
       function (reponse) {
           // Affichage dans la console en cas de succès
-          alert(JSON.stringify(nouveauL));
+          alert(JSON.stringify(nouveauLien));
       },
       true
     );
