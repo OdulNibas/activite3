@@ -81,10 +81,9 @@ form.addEventListener('submit', function(e){
   ajaxPost("https://oc-jswebsrv.herokuapp.com", nLien,
       function (reponse) {
           // Affichage dans la console en cas de succès
-            var resp = JSON.stringify(reponse);
-
-          console.log(resp);
-      });
+      },
+      true
+    );
 
 
   function afficher(){
