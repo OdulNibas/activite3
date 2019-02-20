@@ -76,16 +76,15 @@ button.addEventListener('click', function(){
 
 form.addEventListener('submit', function(e){
 
-  var form = new FormData(form);
+  var nLien = new FormData(form);
   // Envoi de l'objet FormData au serveur
-  ajaxPost("https://oc-jswebsrv.herokuapp.com", commande,
+  ajaxPost("https://oc-jswebsrv.herokuapp.com", nLien,
       function (reponse) {
           // Affichage dans la console en cas de succès
             var resp = JSON.stringify(reponse);
-          
+
           console.log(resp);
-      }
-  );
+      });
 
 
   function afficher(){
