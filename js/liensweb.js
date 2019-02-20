@@ -85,7 +85,7 @@ form.addEventListener('submit', function(e){
       nouveauLien,
       function (reponse) {
           // Affichage dans la console en cas de succès
-          console.log(JSON.stringify(nouveauL));
+          alert(JSON.stringify(nouveauL));
       },
       true
     );
@@ -136,7 +136,5 @@ form.addEventListener('submit', function(e){
               msg.style.display = "none";
             }, 3000)
 });
-document.getElementById('nom').value = '';
-document.getElementById('titre').innerHTML = ' ';
-document.getElementById('url').innerHTML = ' ';
+
 /******************Activité_3*****************************/
