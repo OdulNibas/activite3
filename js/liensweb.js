@@ -78,11 +78,12 @@ form.addEventListener('submit', function(e){
   var nouveauL = {
     nom: e.target.elements.nom.value,
     titre: e.target.elements.titre.value,
-    utl: e.target.elements.url.value
+    url: e.target.elements.url.value
   };
 
   // Envoi de l'objet FormData au serveur
-  ajaxPost("https://oc-jswebsrv.herokuapp.com", nouveauL,
+  ajaxPost("https://oc-jswebsrv.herokuapp.com",
+      nouveauL,
       function (reponse) {
           // Affichage dans la console en cas de succès
           console.log(JSON.stringify(nouveauL));
