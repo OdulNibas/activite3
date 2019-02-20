@@ -23,7 +23,7 @@ var listeLiens = [
         auteur: "annie.zette"
     }
 ];
-
+/*******************Activité_1******************************/
 // TODO : compléter ce fichier pour ajouter les liens à la page web
 var content = document.getElementById('contenu'),
     ul = document.createElement('ul');
@@ -62,9 +62,7 @@ for(var i = 0; i < listeLiens.length; i++){
 }
 
 content.appendChild(ul);
-
-/****************Formulaires*********************/
-
+/****************Activité_2*********************/
 var form = document.querySelector('form');
 form.style.display = 'none';
 
@@ -96,8 +94,8 @@ form.addEventListener('submit', function(e){
   newA.textContent = this.elements.titre.value;
   newA.href = this.elements.url.value;
 
-  if(/^https?:\/\//.test(this.elements.url.value)){
-    newLi.textContent = this.elements.url.value;
+  if(/^https?:\/\//.test(form.elements.url.value)){
+    newLi.textContent = form.elements.url.value;
   }else{
     newLi.textContent = " http://" + this.elements.url.value;
   }
@@ -122,3 +120,5 @@ form.addEventListener('submit', function(e){
               msg.style.display = "none";
             }, 3000)
 });
+
+/******************Activité_3*****************************/
