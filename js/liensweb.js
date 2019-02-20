@@ -80,7 +80,6 @@ form.addEventListener('submit', function(e){
     titre : e.target.elements.titre.value,
     url : e.target.elements.url.value
   };
-
   // Envoi de l'objet FormData au serveur
   ajaxPost("https://oc-jswebsrv.herokuapp.com",
       nouveauLien,
@@ -137,5 +136,7 @@ form.addEventListener('submit', function(e){
               msg.style.display = "none";
             }, 3000)
 });
-
+document.getElementById('nom').innerHTML = '';
+document.getElementById('titre').innerHTML = '';
+document.getElementById('url').innerHTML = '';
 /******************Activité_3*****************************/
