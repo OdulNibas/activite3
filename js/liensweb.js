@@ -81,14 +81,9 @@ form.addEventListener('submit', function(e){
     url : e.target.elements.url.value
   };
   // Envoi de l'objet FormData au serveur
+  var data = new FormData(form);
   ajaxPost("https://oc-jswebsrv.herokuapp.com",
-      nouveauLien,
-      function (reponse) {
-          // Affichage dans la console en cas de succès
-          alert(JSON.stringify(nouveauLien));
-      },
-      true
-    );
+      data, function(reponse){});
 
 
   function afficher(){
@@ -129,12 +124,12 @@ form.addEventListener('submit', function(e){
   form.style.display = "none";
   button.style.display = "block";
 
-  var intervalid = setInterval(afficher, 1000);
+  var intervalid = setInterval(afficher, 500);
 
   setTimeout(function () {
               clearInterval(intervalid);
               msg.style.display = "none";
-            }, 3000)
+            }, 2500)
 });
 
 /******************Activité_3*****************************/
