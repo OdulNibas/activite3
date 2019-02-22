@@ -87,7 +87,7 @@ form.addEventListener('submit', function(e){
   nouveauLien, function(reponse){
 
     var article = JSON.parse(reponse);
-    var content = document.getElementById('content');
+    var content = document.getElementById('contenu');
     article.forEach(function(articles){
       content.textContent = articles.titre;
     });
