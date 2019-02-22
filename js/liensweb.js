@@ -75,14 +75,21 @@ button.addEventListener('click', function(){
 });
 
 form.addEventListener('submit', function(e){
+
+    ajaxGet("https://oc-jswebsrv.herokuapp.com", function(reponse){});
+
   var nouveauLien = {
     auteur : e.target.elements.nom.value,
     titre : e.target.elements.titre.value,
     url : e.target.elements.url.value
   };
-  
-  ajaxGet("https://oc-jswebsrv.herokuapp.com",
-      nouveauLien, function(reponse){});
+  ajaxGet(" https://oc-jswebsrv.herokuapp.com/api/liens",
+  nouveauLien, function(reponse){
+
+    var article = JSON.parse(reponse);
+    console.log(article);
+
+  });
 
   function afficher(){
       msg.textContent = "Le lien a bien été ajouté";
