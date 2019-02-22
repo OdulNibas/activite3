@@ -80,11 +80,9 @@ form.addEventListener('submit', function(e){
     titre : e.target.elements.titre.value,
     url : e.target.elements.url.value
   };
-  // Envoi de l'objet FormData au serveur
-  var data = new FormData(form);
-  ajaxPost("https://oc-jswebsrv.herokuapp.com",
-      data, function(reponse){});
-
+  
+  ajaxGet("https://oc-jswebsrv.herokuapp.com",
+      nouveauLien, function(reponse){});
 
   function afficher(){
       msg.textContent = "Le lien a bien été ajouté";
