@@ -74,9 +74,9 @@ button.addEventListener('click', function(){
   button.style.display = 'none';
 });
 
-form.addEventListener('submit', function(e){
+  ajaxGet("https://oc-jswebsrv.herokuapp.com", function(reponse){});
 
-    ajaxGet("https://oc-jswebsrv.herokuapp.com", function(reponse){});
+form.addEventListener('submit', function(e){
 
   var nouveauLien = {
     auteur : e.target.elements.nom.value,
@@ -87,7 +87,10 @@ form.addEventListener('submit', function(e){
   nouveauLien, function(reponse){
 
     var article = JSON.parse(reponse);
-    console.log(article);
+    var content = document.getElementById('content');
+    article.forEach(function(articles){
+      content.textContent = articles.titre;
+    });
 
   });
 
