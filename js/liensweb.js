@@ -60,7 +60,6 @@ for(var i = 0; i < listeLiens.length; i++){
 
     ul.appendChild(li);
 }
-
 content.appendChild(ul);
 /****************Activité_2*********************/
 var form = document.querySelector('form');
@@ -78,7 +77,6 @@ button.addEventListener('click', function(){
 
 form.addEventListener('submit', function(e){
 e.preventDefault();
-var data = new FormData(form);
   var nouveauLien = {
     auteur : e.target.elements.nom.value,
     titre : e.target.elements.titre.value,
@@ -86,7 +84,7 @@ var data = new FormData(form);
   };
 
   ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",
-  data, function(reponse){});
+  nouveauLien, function(reponse){});
 
   function afficher(){
       msg.textContent = "Le lien a bien été ajouté";
