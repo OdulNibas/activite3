@@ -74,7 +74,7 @@ button.addEventListener('click', function(){
   button.style.display = 'none';
 });
 
-  ajaxGet("https://oc-jswebsrv.herokuapp.com", function(reponse){});
+  ajaxGet("https://oc-jswebsrv.herokuapp.com", function(){});
 
 form.addEventListener('submit', function(e){
 
@@ -83,10 +83,10 @@ form.addEventListener('submit', function(e){
     titre : e.target.elements.titre.value,
     url : e.target.elements.url.value
   };
-  ajaxGet(" https://oc-jswebsrv.herokuapp.com/api/liens",
+  ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",
   nouveauLien, function(reponse){
 
-    var article = JSON.parse(reponse);
+    var article = JSON.stringify(reponse);
     var content = document.getElementById('contenu');
     article.forEach(function(articles){
       content.textContent = articles.titre;
