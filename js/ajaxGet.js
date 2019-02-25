@@ -7,7 +7,6 @@ function ajaxGet(url, callback){
   req.addEventListener('load', function(){
     if(req.status >= 200 && req.status < 400){
       callback(req.responseText);
-      console.log('je suis connecté au serveur !!!');
     } else {
       console.error(req.status + " " + req.statusText + ' ' +url);
     }

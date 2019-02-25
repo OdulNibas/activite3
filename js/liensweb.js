@@ -74,25 +74,19 @@ button.addEventListener('click', function(){
   button.style.display = 'none';
 });
 
-  ajaxGet("https://oc-jswebsrv.herokuapp.com", function(){});
+  ajaxGet("https://oc-jswebsrv.herokuapp.com", function(reponse){});
 
 form.addEventListener('submit', function(e){
-
+e.preventDefault();
+var data = new FormData(form);
   var nouveauLien = {
     auteur : e.target.elements.nom.value,
     titre : e.target.elements.titre.value,
     url : e.target.elements.url.value
   };
+
   ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",
-  nouveauLien, function(reponse){
-
-    var article = JSON.stringify(reponse);
-    var content = document.getElementById('contenu');
-    article.forEach(function(articles){
-      content.textContent = articles.titre;
-    });
-
-  });
+  data, function(reponse){});
 
   function afficher(){
       msg.textContent = "Le lien a bien été ajouté";
@@ -116,7 +110,7 @@ form.addEventListener('submit', function(e){
   if(/^https?:\/\//.test(form.elements.url.value)){
     newLi.textContent = form.elements.url.value;
   }else{
-    newLi.textContent = " http://" + this.elements.url.value;
+    newLi.textContent = " http://" + form.elements.url.value;
   }
 
   newLi.appendChild(newA);
