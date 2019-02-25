@@ -77,27 +77,19 @@ button.addEventListener('click', function(){
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
-  var titre = e.target.elements.titre.value;
-  var url = e.target.elements.url.value;
-  var auteur = e.target.elements.nom.value;
 
   var nouveauLien = {
-    titre : titre,
-    url : url,
-    auteur : auteur
+    titre : e.target.elements.titre.value,
+    url : e.target.elements.url.value,
+    auteur : e.target.elements.nom.value
   };
 
   ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",
   nouveauLien, function(reponse){
-
     var art = JSON.parse(reponse);
     art.forEach(function (article) {
-      art.textContent += article.titre;
-      art.textContent += article.url;
-      art.textContent += article.auteur;
-      console.log(art);
+      console.log(article.url);
     });
-
   },
 true
 );
