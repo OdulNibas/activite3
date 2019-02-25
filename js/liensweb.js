@@ -76,15 +76,31 @@ button.addEventListener('click', function(){
   ajaxGet("https://oc-jswebsrv.herokuapp.com", function(reponse){});
 
 form.addEventListener('submit', function(e){
-e.preventDefault();
+  e.preventDefault();
+  var titre = e.target.elements.titre.value;
+  var url = e.target.elements.url.value;
+  var auteur = e.target.elements.nom.value;
+
   var nouveauLien = {
-    auteur : e.target.elements.nom.value,
-    titre : e.target.elements.titre.value,
-    url : e.target.elements.url.value
+    titre : titre,
+    url : url,
+    auteur : auteur
   };
 
   ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",
-  nouveauLien, function(reponse){});
+  nouveauLien, function(reponse){
+
+    var art = JSON.parse(reponse);
+    art.forEach(function (article) {
+      art.textContent += article.titre;
+      art.textContent += article.url;
+      art.textContent += article.auteur;
+      console.log(art);
+    });
+
+  },
+true
+);
 
   function afficher(){
       msg.textContent = "Le lien a bien été ajouté";
@@ -124,12 +140,10 @@ e.preventDefault();
   form.style.display = "none";
   button.style.display = "block";
 
-  var intervalid = setInterval(afficher, 500);
+  var intervalid = setInterval(afficher, 200);
 
   setTimeout(function () {
               clearInterval(intervalid);
               msg.style.display = "none";
-            }, 2500)
+            }, 2200)
 });
-
-/******************Activité_3*****************************/
