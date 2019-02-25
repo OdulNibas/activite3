@@ -86,13 +86,10 @@ form.addEventListener('submit', function(e){
 
   ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",
   nouveauLien, function(reponse){
-    var art = JSON.parse(reponse);
-    art.forEach(function (article) {
-      console.log(article.url);
-    });
   },
 true
 );
+
 
   function afficher(){
       msg.textContent = "Le lien a bien été ajouté";
