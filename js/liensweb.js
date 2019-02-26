@@ -1,6 +1,6 @@
 /*
 Activité 2
-*/
+*//*
 // Liste des liens Web à afficher. Un lien est défini par :
 // - son titre
 // - son URL
@@ -21,7 +21,7 @@ var listeLiens = [
         url: "http://Wikipedia.org",
         auteur: "annie.zette"
     }
-];
+];*/
 /*******************Activité_1******************************/
 // TODO : compléter ce fichier pour ajouter les liens à la page web
 var content = document.getElementById('contenu'),
