@@ -89,8 +89,24 @@ form.addEventListener('submit', function(e){
   },
 true
 );
+ajaxGet("https://oc-jswebsrv.herokuapp.com/api/liens", function(reponse){
 
-
+  var lien = JSON.parse(reponse);
+  console.log(lien);
+  lien.forEach(function(listLien){
+    var titre = document.createElement('a');
+    titre.textContent = listLien.titre;
+    var nLi = document.createElement('li');
+    var nSpan = document.createElement('span');
+    nLi.textContent = listLien.url;
+    nSpan.textContent = 'Ajouté par ' + listLien.auteur;
+    nSpan.style.display ="block";
+    nLi.appendChild(nSpan);
+    nLi.appendChild(titre);
+    ul.appendChild(nLi)
+    content.appendChild(ul);
+  });
+});
   function afficher(){
       msg.textContent = "Le lien a bien été ajouté";
       msg.style.display = "block";
@@ -107,8 +123,8 @@ true
   var newA = document.createElement('a');
 
   newA.style.color = '#428bca';
-  newA.textContent = this.elements.titre.value;
-  newA.href = this.elements.url.value;
+  newA.textContent = form.elements.titre.value;
+  newA.href = form.elements.url.value;
 
   if(/^https?:\/\//.test(form.elements.url.value)){
     newLi.textContent = form.elements.url.value;
@@ -126,6 +142,8 @@ true
   ul.insertBefore(newLi, ul.childNodes[0]);
   e.preventDefault();
 
+
+
   form.style.display = "none";
   button.style.display = "block";
 
@@ -135,4 +153,5 @@ true
               clearInterval(intervalid);
               msg.style.display = "none";
             }, 2200)
+
 });
