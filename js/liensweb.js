@@ -1,25 +1,24 @@
 /*
 Activité 2
 */
-
 // Liste des liens Web à afficher. Un lien est défini par :
 // - son titre
 // - son URL
 // - son auteur (la personne qui l'a publié)
 var listeLiens = [
     {
-        titre: "So Foot",
-        url: " http://sofoot.com",
+        titre: "So Foot ",
+        url: "http://sofoot.com",
         auteur: "yann.usaille"
     },
     {
-        titre: "Guide d'autodéfense numérique",
-        url: " http://guide.boum.org",
+        titre: "Guide d'autodéfense numérique ",
+        url: "http://guide.boum.org",
         auteur: "paulochon"
     },
     {
-        titre: "L'encyclopédie en ligne Wikipedia",
-        url: " http://Wikipedia.org",
+        titre: "L'encyclopédie en ligne Wikipedia ",
+        url: "http://Wikipedia.org",
         auteur: "annie.zette"
     }
 ];
@@ -31,7 +30,7 @@ var content = document.getElementById('contenu'),
 
 content.parentNode.style.backgroundColor = '#c3c3c3';
 
-
+/*
 for(var i = 0; i < listeLiens.length; i++){
 
     var titre = document.createTextNode(listeLiens[i].titre),
@@ -87,26 +86,9 @@ form.addEventListener('submit', function(e){
   ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",
   nouveauLien, function(reponse){
   },
-true
+  true
 );
-ajaxGet("https://oc-jswebsrv.herokuapp.com/api/liens", function(reponse){
 
-  var lien = JSON.parse(reponse);
-  console.log(lien);
-  lien.forEach(function(listLien){
-    var titre = document.createElement('a');
-    titre.textContent = listLien.titre;
-    var nLi = document.createElement('li');
-    var nSpan = document.createElement('span');
-    nLi.textContent = listLien.url;
-    nSpan.textContent = 'Ajouté par ' + listLien.auteur;
-    nSpan.style.display ="block";
-    nLi.appendChild(nSpan);
-    nLi.appendChild(titre);
-    ul.appendChild(nLi)
-    content.appendChild(ul);
-  });
-});
   function afficher(){
       msg.textContent = "Le lien a bien été ajouté";
       msg.style.display = "block";
@@ -142,8 +124,6 @@ ajaxGet("https://oc-jswebsrv.herokuapp.com/api/liens", function(reponse){
   ul.insertBefore(newLi, ul.childNodes[0]);
   e.preventDefault();
 
-
-
   form.style.display = "none";
   button.style.display = "block";
 
@@ -154,4 +134,36 @@ ajaxGet("https://oc-jswebsrv.herokuapp.com/api/liens", function(reponse){
               msg.style.display = "none";
             }, 2200)
 
+});
+
+ajaxGet("https://oc-jswebsrv.herokuapp.com/api/liens", function(reponse){
+
+  var lien = JSON.parse(reponse);
+  console.log(lien);
+  lien.forEach(function(listLien){
+    var titre = document.createElement('a');
+    titre.style.color = '#428bca';
+    titre.textContent = listLien.titre;
+    titre.href = listLien.url;
+    var nLi = document.createElement('li');
+    nLi.textContent = listLien.url;
+    if(/^https?:\/\//.test(listLien.url)){
+      nLi.textContent = listLien.url;
+    }else{
+      nLi.textContent = " http://" + listLien.url;
+    }
+    var nSpan = document.createElement('span');
+
+    nSpan.textContent = 'Ajouté par ' + listLien.auteur;
+    nSpan.style.display ="block";
+    nLi.appendChild(nSpan);
+    nLi.appendChild(titre);
+    nLi.insertBefore(titre, nLi.childNodes[0]);
+    nLi.style.backgroundColor = '#ffffff';
+    nLi.style.margin = '15px';
+    nLi.style.padding = '15px 20px';
+    nLi.style.listStyleType = "none";
+    ul.appendChild(nLi)
+    content.appendChild(ul);
+  });
 });
